@@ -2,18 +2,22 @@
 const API_KEY="fd7dbdcae45f4e5ab590540ba828dd91";
 const url="https://newsapi.org/v2/everything?q=";
 
+//fetches news on page load
 window.addEventListener("load",()=>fetchNews("India"));
 
 function reload(){
     window.location.reload();
 }
 
+//fetches news based on query
 async function fetchNews(query){
     const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
     const data = await res.json();
     console.log(data);
     bindData(data.articles);
 }
+
+//fetched news based on category
 
 function bindData(articles){
     const cardsContainer = document.getElementById('cards-container');
